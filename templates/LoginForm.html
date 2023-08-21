@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            <div class="jumbotron text-center">
+                #if($register)
+                <div class="alert alert-success" role="alert">
+                    Registration successful. Login to continue.
+                </div>
+                #end
+                #if($credentialError)
+                <div class="alert alert-danger" role="alert">
+                    Username or password is incorrect. Please check your credentials.
+                </div>
+                #end
+                <form method="post" action="/login">
+                    <div class="form-group">
+                        <label for="username" class="float-left">Username</label>
+                        <input id="username" name = "username" class="form-control" type="text" placeholder="Enter username" required></input>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input id="password" name="password" class="form-control" type="password" placeholder="Enter password" required></input>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input id="login" class="btn btn-primary mb-2" class="form-control" type="submit"
+                               value="Login"></input>
+                    </div>
+                </form>
+                <hr>
+                <h6>Not a member? <a href="/register">Register Now</a></h6>
+            </div>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+</div>
+</body>
+</html>

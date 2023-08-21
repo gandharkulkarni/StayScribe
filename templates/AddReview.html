@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add review</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/home">Home</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/searchHotels">Search Hotels</a></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><a href="/viewExpediaVisitHistory">Expedia Visit History</a></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><a href="/favourites">Favourite Hotels</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout </a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron text-center">
+                <h2 class="display-4">$hotel.hotelName</h2>
+                <p class="lead">$hotel.hotelAddress, $hotel.hotelCity, $hotel.hotelState</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <form method="post" action="/addReview">
+                <div class="form-group">
+                    <label for="hotelId" class="float-left">Hotel Id</label>
+                    <input id="hotelId" name = "hotelId" class="form-control" type="text" value="$hotel.hotelId" readonly></input>
+                </div>
+                <div class="form-group">
+                    <label for="reviewTitle" class="float-left">Review Title</label>
+                    <input id="reviewTitle" name = "reviewTitle" class="form-control" type="text" required></input>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="reviewText">Review Text</label>
+                    <input id="reviewText" name="reviewText" class="form-control" type="text" required></input>
+                </div>
+                <div class="form-group">
+                    <label for="overAllRating">Rating</label>
+                    <input id="overAllRating" name="overAllRating" class="form-control" type="number" min="1" step="0.1" max="5" required></input>
+                </div>
+                <br>
+                <div class="form-group text-center">
+                    <input id="submit" class="btn btn-primary mb-2" class="form-control" type="submit"
+                           value="Submit Review"></input>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

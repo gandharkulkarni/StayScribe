@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Reviews</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="js/reviewFetcher.js"></script>
+    <script src="js/updateExpediaVisitCount.js"></script>
+    <script src="js/saveHotelAsFavourite.js"></script>
+    <script src="js/weatherDataFetcher.js"></script>
+</head>
+<body onload="fetchReviews('$hotel.hotelId', '$username', true, true);fetchWeatherData($hotel.hotelCoordinates.hotelLatitude, $hotel.hotelCoordinates.hotelLongitude)">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/home">Home</a>
+        </div>
+        <ul class="nav navbar-nav active">
+            <li><a href="/searchHotels">Search Hotels</a></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><a href="/viewExpediaVisitHistory">Expedia Visit History</a></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><a href="/favourites">Favourite Hotels</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout </a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron text-center">
+                <h2 class="display-4">$hotel.hotelName</h2>
+                <p class="lead">$hotel.hotelAddress, $hotel.hotelCity, $hotel.hotelState</p>
+                <p class="lead">Average Rating : $avgOverallRating</p>
+                <p id="currentWeather" style="font-style: italic; font-size:14px;"></p>
+                <hr>
+                <a href="$expediaLink" class="btn btn-info" target="_blank" onclick="updateExpediaVisitCount($hotel.hotelId,'$expediaLink')">Expedia's Page</a>
+                <a href="/addReview?hotelId=$hotel.hotelId" class="btn btn-success">Add Review</a>
+                <a onclick="favouriteHotel('$hotel.hotelId')" class="btn btn-primary"> Favourite <span class="glyphicon glyphicon-star-empty"></span></a>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4" id="favouriteHotel">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover" id="tablearea">
+            </table>
+        </div>
+        <div class="alert alert-primary text-center" id="reviewContent" role="alert"></div>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-12">
+            <a class="btn btn-info" onclick="fetchReviews('$hotel.hotelId', '$username', false, false)"><span class="glyphicon glyphicon-arrow-left"></span> Prev</a>
+            <a id="currentPage" class="">0</a>
+            <a class="btn btn-info" onclick="fetchReviews('$hotel.hotelId', '$username', false, true)">Next <span class="glyphicon glyphicon-arrow-right"></span></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
